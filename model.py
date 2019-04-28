@@ -119,15 +119,15 @@ def rpn_conv_block(x, cout, q, name='rpn_conv'):
     return x
 
 
-def make():
-    Dp = 10
-    Hp = 400
-    Wp = 352
-    T = 35
+def make(Dp, Hp, Wp, T):
+    #Dp = 10
+    #Hp = 400
+    #Wp = 352
+    #T = 35
     # TODO: maybe implement the grouping, sampling, and preprocessing in-network?
     # The grouping and sampling can be done outside the network.
     # Here we expect the preprocessed data already.
-    x = Input((Dp, Hp, Wp, T, 7))
+    x = Input((Dp, Hp, Wp, T, 7), name='input')
     y = vfe_block(x, 32, 'vfe1')
     y = vfe_block(y, 128, 'vfe2')
     y = fcn_block(y, 128, 'fcn1')
